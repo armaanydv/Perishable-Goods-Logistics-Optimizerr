@@ -1,15 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Crisis Rescue</title>
+</head>
+<body>
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Optimize Route Functionality</title>
-    </head>
+<h2>Send Rescue Request</h2>
+<button onclick="sendRequest()">Send Request</button>
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<pre id="output"></pre>
+
+<script>
+function sendRequest() {
+  fetch("http://127.0.0.1:8001/api/request", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      donor_id: "D1",
+      type: "medicine",
+      priority: "high",
+      start_lon: 77.209,
+      start_lat: 28.6139,
+      end_lon: 77.1025,
+      end_lat: 28.7041
+    })
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Backend error");
+    return res.json();
+  })
+  .then(data => {
+    document.getElementById("output").textContent =
+      JSON.stringify(data, null, 2);
+  })
+  .catch(err => {
+    document.getElementById("output").textContent =
+      "Error: " + err.message;
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+backend/backend/venv/
+
+# VS Code
+.vscode/
+*.osm.pbf
+*.osrm*
+osrm/data/
+node_modules/
+.env

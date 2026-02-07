@@ -6,5 +6,6 @@ router = APIRouter()
 def health():
     return {
         "status": "OK",
-        "system": "Live Crisis Adaptation enabled"
+        "message": "Backend running"
     }
+

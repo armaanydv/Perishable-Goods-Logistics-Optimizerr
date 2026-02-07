@@ -1,0 +1,2 @@
+donor_id,type,priority,start_lon,start_lat,end_lon,end_lat,distance_km,eta_min
+,string,string,0.0,0.0,0.0,0.0,5.0,10.0
